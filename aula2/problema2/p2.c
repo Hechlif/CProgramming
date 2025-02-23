@@ -19,8 +19,7 @@ void main(){
     
     printf("1st Time: %2d h:%2d m:%2d s\n", hours, minutes, seconds);
     
-    printf("2nd Time: %2d h:%2d m:%2d s\n", hours, minutes, seconds);
-    
+    printf("2nd Time: %2d h:%2d m:%2d s\n", hours2, minutes2, seconds2);
     
     if (hours < 0 || hours > 23 || hours2 < 0 || hours2 > 23 || minutes < 0 || minutes > 59 || minutes2 < 0 || minutes2 > 59 || seconds < 0 || seconds > 59 || seconds2 < 0 || seconds2 > 59){
         printf("Invalid time entered\n");
