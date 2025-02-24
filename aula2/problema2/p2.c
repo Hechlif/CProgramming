@@ -52,4 +52,6 @@ void main(){
     diffhours = hours - hours2 - b;    
 
     printf("The difference between the times is %2d h:%2d m:%2d s\n", diffhours, diffminutes, diffseconds);
+
+    return;
 }
