@@ -1,3 +1,9 @@
+// Escreva um programa para ler o número de um mês e que imprima de seguida a estação do ano no dia 1 desse mês, 
+// seguido de uma m udança de linha. Utilize o switch/case.
+// Por exemplo, se o input for: o programa deve escrever apenas:
+// Inverno
+
+
 #include <stdio.h>
 
 int main() {

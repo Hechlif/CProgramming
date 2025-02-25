@@ -1,3 +1,9 @@
+// Escreva um programa para ler um numero real positivo e que realize o arredondamento para a n-esima potencia de 10, com n 
+// introduzido pelo utilizador (n assume valores entre 1 e 7, n=1 arredonda a dezena, n=2 arredonda a centena, etc.). O valor deve 
+// ficar guardado arredondado numa variavel. Use apenas o stdio.h e o stdlib.h.
+// Exemplo: para os valores de 2163, 547 e 997, e supondo que se especifica n = 2, o programa deve imprimir, respectivamente, 2200
+// 500 e 1000
+
 #include <stdio.h>
 #include <stdlib.h>
 
