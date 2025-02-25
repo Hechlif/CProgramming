@@ -2,7 +2,7 @@
 
 int main() {
     int mes;
-    printf("Digite o numero do mes (1-12): ");
+    printf("Digite o número do mês (1-12): ");
     scanf("%d", &mes);
     
     switch (mes) {
@@ -13,7 +13,7 @@ int main() {
             printf("O mês %d é primavera.\n", mes);
             break;
         case 6: case 7: case 8:
-            printf("O mês %d é verao.\n", mes);
+            printf("O mês %d é verão.\n", mes);
             break;
         case 9: case 10: case 11:
             printf("O mês %d é outono.\n", mes);
