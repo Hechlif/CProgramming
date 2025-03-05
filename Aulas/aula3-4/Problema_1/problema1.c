@@ -25,15 +25,15 @@ int main() {
             scanf("%d", &resposta);
             
             if (resposta == 0) {
-                printf("A sair do programa. bye bye!\n");
+                printf("A sair do programa. Bye bye!\n");
                 return 0;
             }
             
             if (resposta == correta) {
-                printf("A resposta está correta. bom trabalho!\n\n");
+                printf("A resposta está correta. Bom trabalho!\n\n");
                 break;
             } else {
-                printf("A resposta está errada. tente novamente.\n");
+                printf("Burro de merda não sabes a tabuada. Tenta outra vez caralho\n");
             }
         }
     }
