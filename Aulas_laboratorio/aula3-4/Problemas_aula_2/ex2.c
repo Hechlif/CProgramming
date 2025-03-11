@@ -10,7 +10,7 @@ void readNumbers(int *numbers, int size){
     }
 }
 
-// Encode number into how many times the digit repeats (112223 -----> 2*1, 3*2, 1*3)
+// Encode number into how many times the digit repeats (112223 into 2*1, 3*2, 1*3)
 void encodeNumber(int number, char *encodedNumber){
     char numberString[10];
     sprintf(numberString, "%d", number);
@@ -19,7 +19,10 @@ void encodeNumber(int number, char *encodedNumber){
         if(numberString[i] == numberString[i+1]){
             count++;
         }else{
-            sprintf(encodedNumber, "%d*%c,", count, numberString[i]);
+            sprintf(encodedNumber, "%d*%c", count, numberString[i]);
+            if (i < strlen(numberString) - 1) {
+                strcat(encodedNumber, ",");
+            }
             encodedNumber += strlen(encodedNumber);
             count = 1;
         }
@@ -54,7 +57,7 @@ int main(){
         memset(decodedNumber, 0, sizeof(decodedNumber));
         encodeNumber(numbers[i], encodedNumber);
         decodeNumber(encodedNumber, decodedNumber);
-        printf("Number %d: %s ---> ", numbers[i], encodedNumber);
+        printf("Number %d:\nEncoded: %s\nDecoded: ", numbers[i], encodedNumber);
         for(int j = 0; decodedNumber[j] != 0; j++){
             printf("%d", decodedNumber[j]);
         }
