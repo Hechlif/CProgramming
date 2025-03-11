@@ -25,7 +25,7 @@ int main() {
                 printf("Quanto é %d dividido por %d?\n", num1, num2);
                 resultado = num1 / num2;
                 break;
-            case 3: 
+            case 3:
                 printf("Qual é o resto da divisão de %d por %d?\n", num1, num2);
                 resultado = num1 % num2;
                 break;
