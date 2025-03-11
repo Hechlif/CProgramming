@@ -1,29 +1,35 @@
-// Escrever um programa em C que faça contas de divisao inteira, multiplicaçao sobre os restos de divisaoes. Use a
-// função rand() para gerar dois inteiros entre 1 e 100, que são mostrados ao aluno. O aluno deverá introduzir o
-// resultado e este deverá ser comparado com a solução correta. O programa deverá permitir que o aluno faça várias
-// tentativas, até acertar, e em cada tentativa indicar se o aluno acertou ou errou. O programa apenas deve sair
-// quando o aluno introduzir o número menos um.
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
 int main() {
     int num1, num2, resultado, resposta, opcao;
-    srand(time(NULL));
+    srand(time(NULL)); // Inicializa a semente do gerador de números aleatórios
 
     while (1) {
-        opcao = rand() % 3 + 1;
+        printf("Escolha o tipo de conta:\n");
+        printf("1 - Multiplicação\n");
+        printf("2 - Divisão inteira\n");
+        printf("3 - Resto da divisão\n");
+        printf("Digite -1 para sair\n");
+        printf("Opção: ");
+        scanf("%d", &opcao);
 
+        if (opcao == -1) {
+            printf("Programa encerrado.\n");
+            break;
+        }
+
+        // Gera dois números aleatórios entre 1 e 100
         num1 = rand() % 100 + 1;
         num2 = rand() % 100 + 1;
 
         switch (opcao) {
-            case 1: 
+            case 1: // Multiplicação
                 printf("Quanto é %d multiplicado por %d?\n", num1, num2);
                 resultado = num1 * num2;
                 break;
-            case 2:
+            case 2: // Divisão inteira
                 while (num1 % num2 != 0) {
                     num1 = rand() % 100 + 1;
                     num2 = rand() % 100 + 1;
@@ -31,10 +37,13 @@ int main() {
                 printf("Quanto é %d dividido por %d?\n", num1, num2);
                 resultado = num1 / num2;
                 break;
-            case 3:
+            case 3: // Resto da divisão
                 printf("Qual é o resto da divisão de %d por %d?\n", num1, num2);
                 resultado = num1 % num2;
                 break;
+            default:
+                printf("Opção inválida! Tente novamente.\n");
+                continue;
         }
 
         while (1) {
