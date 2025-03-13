@@ -73,7 +73,9 @@ int main(int argc, char *argv[]) {
     qsort(dict->palavras, dict->count, sizeof(char *), compare_words);
     process_text(dict);
     
-    for (size_t i = 0; i < dict->count; i++) {
+    for (size_t i = 0;
+        i < dict->count;
+         i++) {
         free(dict->palavras[i]);
     }
     free(dict->palavras);
@@ -81,3 +83,5 @@ int main(int argc, char *argv[]) {
     
     return EXIT_SUCCESS;
 }
+
+// como posso adicionar um dicionario ao codigo
