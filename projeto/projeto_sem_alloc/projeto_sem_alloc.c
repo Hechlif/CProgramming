@@ -3,7 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 
-#define MAX_PALAVRAS 50000
+#define MAX_PALAVRAS 5000
 #define MAX_TAMANHO_PALAVRA 128
 #define MAX_LINHAS 1024
 
