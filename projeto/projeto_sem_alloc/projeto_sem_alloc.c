@@ -12,29 +12,25 @@ typedef struct {
     size_t count;
 } dicionario;
 
-dicionario *load_dicionario(const char *fname) {
+dicionario d;
+
+void load_dicionario(const char *fname) {
     printf("A fazer loading do dicionário através do ficheiro: %s\n", fname);
     FILE *f = fopen(fname, "r");
     if (!f) {
         perror("Erro ao abrir o dicionário");
-        return NULL;
+        exit(EXIT_FAILURE);
     }
     
-    dicionario *d = malloc(sizeof(dicionario));
-    if (!d) {
-        perror("Erro ao alocar memória para o dicionário");
-        return NULL;
-    }
-    d->count = 0;
+    d.count = 0;
     
-    while (d->count < MAXIMO_PALAVRAS && fgets(d->palavras[d->count], MAXIMO_TAMANHO_DE_PALAVRAS, f)) {
-        d->palavras[d->count][strcspn(d->palavras[d->count], "\n")] = '\0';
-        d->count++;
+    while (d.count < MAXIMO_PALAVRAS && fgets(d.palavras[d.count], MAXIMO_TAMANHO_DE_PALAVRAS, f)) {
+        d.palavras[d.count][strcspn(d.palavras[d.count], "\n")] = '\0';
+        d.count++;
     }
     fclose(f);
     
-    printf("Dicionário carregado com %zu palavras\n", d->count);
-    return d;
+    printf("Dicionário carregado com %zu palavras\n", d.count);
 }
 
 int palavra_no_dicionario(dicionario *d, const char *word) {
@@ -73,9 +69,8 @@ int main(int argc, char *argv[]) {
     if (argc > 1) {
         d_file = argv[1];
     }
-    dicionario *d = load_dicionario(d_file);
-    process_text(d);
-    free(d);
+    load_dicionario(d_file);
+    process_text(&d);
     printf("Program finished\n");
     
     return EXIT_SUCCESS;
