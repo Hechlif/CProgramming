@@ -4,7 +4,7 @@
 #include <ctype.h>
 
 #define MAXIMO_PALAVRAS 431102
-#define MAXIMO_TAMANHO_DE_PALAVRAS 128
+#define MAXIMO_TAMANHO_DE_PALAVRAS 40
 #define MAXIMAS_LINHAS 1024
 
 typedef struct {
@@ -33,7 +33,6 @@ void load_dicionario(const char *fname) {
 int palavra_no_dicionario(dicionario *d, const char *word) {
     for (size_t i = 0; i < d->count; i++) {
         if (strcasecmp(d->palavras[i], word) == 0) {
-            printf("\"%s\" foi encontrado no dicionario\n", word);
             return 1;
         }
     }
@@ -51,7 +50,6 @@ void process_text(dicionario *d) {
         while (token) {
             if (!palavra_no_dicionario(d, token)) {
                 if (!has_error) {
-                    printf("%d: %s \n", line_number, line);
                     has_error = 1;
                 }
                 printf("Erro encontrado na palavra: \"%s\"\n", token);
