@@ -36,7 +36,6 @@ int palavra_no_dicionario(dicionario *d, const char *word) {
             return 1;
         }
     }
-    printf("\"%s\" nao foi encontrado no dicionario\n", word);
     return 0;
 }
 
