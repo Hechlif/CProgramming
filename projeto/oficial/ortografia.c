@@ -15,19 +15,19 @@ typedef struct {
 dicionario d;
 
 void load_dicionario(const char *fname) {
-    FILE *f = fopen(fname, "r");
-    if (!f) {
+    FILE *word = fopen(fname, "r");
+    if (!word) {
         perror("Erro ao abrir o dicionario");
         exit(EXIT_FAILURE);
     }
     
     d.count = 0;
     
-    while (d.count < MAXIMO_PALAVRAS && fgets(d.palavras[d.count], MAXIMO_TAMANHO_DE_PALAVRAS, f)) {
+    while (d.count < MAXIMO_PALAVRAS && fgets(d.palavras[d.count], MAXIMO_TAMANHO_DE_PALAVRAS, word)) {
         d.palavras[d.count][strcspn(d.palavras[d.count], "\n")] = '\0';
         d.count++;
     }
-    fclose(f);
+    fclose(word);
 }
 
 int palavra_no_dicionario(dicionario *d, const char *word) {
