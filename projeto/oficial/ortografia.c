@@ -15,7 +15,6 @@ typedef struct {
 dicionario d;
 
 void load_dicionario(const char *fname) {
-    printf("A carregar o dicionario atraves do ficheiro: %s\n", fname);
     FILE *f = fopen(fname, "r");
     if (!f) {
         perror("Erro ao abrir o dicionario");
@@ -29,8 +28,6 @@ void load_dicionario(const char *fname) {
         d.count++;
     }
     fclose(f);
-    
-    printf("Dicionario carregado com %zu palavras\n", d.count);
 }
 
 int palavra_no_dicionario(dicionario *d, const char *word) {
@@ -70,6 +67,7 @@ int main(int argc, char *argv[]) {
         d_file = argv[1];
     }
     load_dicionario(d_file);
+    printf("Escreve uma frase para analizar:\n");
     process_text(&d);
     printf("Programa encerrado\n");
     
