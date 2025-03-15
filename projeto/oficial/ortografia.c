@@ -4,8 +4,8 @@
 #include <ctype.h>
 
 #define MAXIMO_PALAVRAS 431102
-#define MAXIMO_TAMANHO_DE_PALAVRAS 40
-#define MAXIMAS_LINHAS 1024
+#define MAXIMO_TAMANHO_DE_PALAVRAS 1000
+#define MAXIMAS_LINHAS 400
 
 typedef struct {
     char palavras[MAXIMO_PALAVRAS][MAXIMO_TAMANHO_DE_PALAVRAS];
@@ -44,7 +44,7 @@ void process_text(dicionario *d) {
     int line_number = 0;
     while (fgets(line, sizeof(line), stdin)) {
         line_number++;
-        printf("%d : %s", line_number, line);
+        printf("%d : %s", line_number, line); // imprime a linha
         char *token = strtok(line, " \t.,!?\"'()\n");
         int has_error = 0;
         while (token) {
@@ -52,7 +52,7 @@ void process_text(dicionario *d) {
                 if (!has_error) {
                     has_error = 1;
                 }
-                printf("Erro encontrado na palavra: \"%s\"\n", token);
+                printf("Erro encontrado na palavra: \"%s\"\n", token); // imprime as palavras com erros separadamente
             }
             token = strtok(NULL, " \t.,!?\"'()\n");
         }
@@ -65,8 +65,8 @@ int main(int argc, char *argv[]) {
         d_file = argv[1];
     }
     load_dicionario(d_file);
-    printf("Escreve uma frase para analizar:\n");
-    process_text(&d);
+    printf("Escreve uma frase para analizar:\n"); // 1ª mensagem a ser exibida
+    process_text(&d); 
     printf("Programa encerrado\n");
     
     return EXIT_SUCCESS;
