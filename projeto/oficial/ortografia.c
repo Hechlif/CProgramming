@@ -45,6 +45,7 @@ void process_text(dicionario *d) {
     int line_number = 0;
     while (fgets(line, sizeof(line), stdin)) {
         line_number++;
+        printf("Linha %d: %s", line_number, line);
         char *token = strtok(line, " \t.,!?\"'()\n");
         int has_error = 0;
         while (token) {
