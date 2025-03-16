@@ -45,7 +45,7 @@ void process_text(dicionario *d) {
     while (fgets(line, sizeof(line), stdin)) {
         line_number++;
         printf("%d : %s", line_number, line); // imprime o numero da linha e a frase digitada
-        char *token = strtok(line, " \t.,!?\"'()\n");
+        char *token = strtok(line, " \t.,!?\"'()-\n");
         int has_error = 0;
         while (token) {
             if (!palavra_no_dicionario(d, token)) {
@@ -54,20 +54,20 @@ void process_text(dicionario *d) {
                 }
                 printf("Erro encontrado na palavra: \"%s\"\n", token); // imprime as palavras com erros separadamente
             }
-            token = strtok(NULL, " \t.,!?\"'()\n");
+            token = strtok(NULL, " \t.,!?\"'()-\n");
         }
     }
 }
 
 int main(int argc, char *argv[]) {
-    const char *d_file = "words";
+    const char *d_file = "words"; // Define o arquivo de dicionário padrão como "words"
     if (argc > 1) {
-        d_file = argv[1];
+        d_file = argv[1]; // Se um arquivo de dicionário for fornecido como argumento, usa esse arquivo
     }
-    load_dicionario(d_file);
-    printf("Escreve uma frase para analizar:\n"); // 1ª mensagem a ser exibida
-    process_text(&d); 
-    printf("Programa encerrado\n");
+    load_dicionario(d_file); // Carrega o dicionário a partir do arquivo especificado
+    printf("Escreve uma frase para analizar:\n"); // frase para ser analisada
+    process_text(&d); // verifica se as palavras da frase estão no dicionário
+    printf("Programa encerrado\n"); 
     
-    return EXIT_SUCCESS;
+    return EXIT_SUCCESS; // Retorna o status de sucesso
 }
