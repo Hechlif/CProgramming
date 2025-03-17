@@ -40,21 +40,22 @@ int palavra_no_dicionario(dicionario *d, const char *word) {
 }
 
 void process_text(dicionario *d) {
+    int try = 0;
     char line[MAXIMO_TAMANHO_DE_PALAVRAS];
     int line_number = 0;
     while (fgets(line, sizeof(line), stdin)) {
         line_number++;
-        printf("%d : %s", line_number, line);
-        char *token = strtok(line, " \t.,!?\"'()-\n");
+        char *token = strtok(line, " \t.,!?\"'()-;:1234567890\n");
         int has_error = 0;
         while (token) {
             if (!palavra_no_dicionario(d, token)) {
                 if (!has_error) {
                     has_error = 1;
+                    printf("%d: %s", line_number, line);
                 }
-                printf("Erro encontrado na palavra: \"%s\"\n", token);
+                printf("Erro na palavra \"%s\"\n", token);
             }
-            token = strtok(NULL, " \t.,!?\"'()-\n");
+            token = strtok(NULL, " \t.,!?\"'()-;:1234567890\n");
         }
     }
 }
@@ -67,7 +68,6 @@ int main(int argc, char *argv[]) {
     load_dicionario(d_file);
     printf("Escreve uma frase para analizar:\n");
     process_text(&d); 
-    printf("Programa encerrado\n"); 
     
     return EXIT_SUCCESS;
 }
