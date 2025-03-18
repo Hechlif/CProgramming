@@ -1,0 +1,140 @@
+23	F20	2	4	Doroteia Peixoto	F	1:17:58 AM
+46	F20	4	1	Filomena Costa	F	1:21:20 AM
+39	F20	3	10	Vanessa Carvalho	F	1:20:30 AM
+129	F20	6	646	Laura Silva	F	1:28:09 AM
+121	F20	5	356	Joana Fonseca	F	1:27:40 AM
+15	F20	1	3	Carla Salome Rocha	F	1:15:01 AM
+133	F40	2	1345	Madalena Silva	F	1:28:13 AM
+36	F40	1	62	Elisabete Lopes	F	1:20:11 AM
+97	F45	1	1301	Lucinda Moreira	F	1:25:43 AM
+10	M20	6	900	Bruno Carvalho	M	1:13:13 AM
+66	M20	22	384	Gil Freitas	M	1:23:15 AM
+81	M20	27	519	Fábio Cruz	M	1:24:35 AM
+13	M20	7	9	Ricardo Vale	M	1:14:54 AM
+14	M20	8	513	Paulo Morais	M	1:14:54 AM
+79	M20	26	340	Pedro Freitas	M	1:24:25 AM
+136	M20	36	343	Nuno Silva	M	1:28:19 AM
+8	M20	5	5	Paulo Mendes	M	1:11:57 AM
+7	M20	4	672	João Antunes	M	1:11:42 AM
+63	M20	21	681	Carlos Manuel Pereira Silva	M	1:23:03 AM
+20	M20	9	375	Vitor Mesquita Ribeiro	M	1:17:42 AM
+85	M20	28	394	Marko Santos	M	1:24:53 AM
+58	M20	20	4047	Diogo Madeira	M	1:22:36 AM
+6	M20	3	13	Mihail Lalev	M	1:08:55 AM
+57	M20	19	711	João Sousa	M	1:22:35 AM
+25	M20	10	697	José Henrique Machado Pires	M	1:18:34 AM
+26	M20	11	647	Pedro Martins	M	1:18:37 AM
+5	M20	2	14	Rui Muga	M	1:08:54 AM
+87	M20	29	733	Pedro Oliveira	M	1:24:53 AM
+29	M20	12	366	Marco Pinto	M	1:19:33 AM
+116	M20	35	2795	Luis Dantas	M	1:27:21 AM
+31	M20	13	43	Braima Dabo	M	1:19:52 AM
+52	M20	18	4099	Manuel Sobral Gonzalez	M	1:22:19 AM
+33	M20	14	703	João Baptista	M	1:20:02 AM
+92	M20	30	721	Nuno Carvalho	M	1:25:09 AM
+111	M20	34	323	João Malheiro	M	1:26:56 AM
+4	M20	1	696	Bruno Miguel Ramos Da Silva	M	1:08:48 AM
+75	M20	24	606	Luís Cerqueira	M	1:24:05 AM
+50	M20	17	2756	Henrique Costa	M	1:21:58 AM
+78	M20	25	718	João Dias	M	1:24:21 AM
+110	M20	33	717	Pedro Torres	M	1:26:55 AM
+49	M20	16	322	Diogo Miguéis	M	1:21:54 AM
+96	M20	31	402	Pedro Henriques	M	1:25:43 AM
+70	M20	23	682	Sérgio Salgueiro	M	1:23:44 AM
+98	M20	32	474	Ricardo Areias	M	1:25:55 AM
+37	M20	15	28	Joao Correia	M	1:20:13 AM
+101	M35	21	495	João Martins	M	1:26:14 AM
+103	M35	22	580	António Salgado	M	1:26:29 AM
+93	M35	20	556	Telmo Reis	M	1:25:12 AM
+107	M35	23	472	Ricardo Campos	M	1:26:43 AM
+38	M35	9	534	Miguel Maia	M	1:20:30 AM
+34	M35	8	460	Pedro Reis	M	1:20:02 AM
+32	M35	7	416	Helder Costa	M	1:19:55 AM
+91	M35	19	352	Ângelo Santos	M	1:25:00 AM
+89	M35	18	368	Bruno Sousa	M	1:24:57 AM
+55	M35	10	505	Rui Silva	M	1:22:25 AM
+119	M35	24	450	José Marques	M	1:27:27 AM
+122	M35	25	336	Joao Machado	M	1:27:40 AM
+124	M35	26	52	Helder Filipe	M	1:27:43 AM
+86	M35	17	694	Carlos Martins	M	1:24:53 AM
+21	M35	6	405	Nuno Pinho	M	1:17:45 AM
+61	M35	11	391	Helder Rodrigues	M	1:23:00 AM
+82	M35	16	377	David Gómez Agras	M	1:24:36 AM
+19	M35	5	716	Helder Oliveira	M	1:17:13 AM
+64	M35	12	701	Oscar Garcia Garcia	M	1:23:03 AM
+137	M35	27	686	Eduardo Camilo	M	1:28:20 AM
+139	M35	28	503	Óscar Rodrigues Da Silva	M	1:28:24 AM
+67	M35	13	436	José Afonso	M	1:23:25 AM
+9	M35	4	11	Oscar Mendes	M	1:13:02 AM
+3	M35	3	7	Nicodemus Biwott	M	1:08:44 AM
+2	M35	2	8	Rui Pedro Silva	M	1:08:32 AM
+71	M35	14	467	Duarte Queiroz	M	1:23:48 AM
+1	M35	1	6	Jose Moreira	M	1:07:49 AM
+74	M35	15	468	Mario Monteiro	M	1:23:52 AM
+123	M40	17	600	Diogo M. A. Oliveira	M	1:27:40 AM
+72	M40	9	2073	Rui Martins	M	1:23:50 AM
+115	M40	15	538	Henrique Silva	M	1:27:19 AM
+77	M40	10	573	Mark Velhote	M	1:24:15 AM
+138	M40	24	1341	Rui Sobral	M	1:28:22 AM
+125	M40	18	585	Luis Miguel Martins	M	1:27:50 AM
+126	M40	19	459	Hélder Silva	M	1:27:52 AM
+65	M40	8	398	Nuno Vieira	M	1:23:03 AM
+62	M40	7	643	Albano Seca	M	1:23:01 AM
+127	M40	20	382	Mário Rodrigues	M	1:27:55 AM
+105	M40	14	2794	Filipe Lima	M	1:26:41 AM
+12	M40	1	712	Rafael Fuentes Lubian	M	1:13:39 AM
+18	M40	2	698	Vasco Batista	M	1:16:28 AM
+131	M40	21	1343	Carlos Sousa	M	1:28:12 AM
+88	M40	11	512	António Araújo	M	1:24:55 AM
+54	M40	6	730	Ivo Machado	M	1:22:20 AM
+43	M40	3	1316	Jose Freitas	M	1:20:55 AM
+53	M40	5	424	Rui Santos	M	1:22:20 AM
+134	M40	22	668	Americo Silva	M	1:28:14 AM
+44	M40	4	3200	Jose Carlos Ferreira	M	1:21:07 AM
+94	M40	12	709	José Julián Beltrán Taboada	M	1:25:32 AM
+95	M40	13	540	Eduardo Del Valle De La Jara	M	1:25:33 AM
+135	M40	23	714	Fernando Gomes	M	1:28:18 AM
+118	M40	16	4025	Jose Ferreira	M	1:27:25 AM
+48	M45	8	516	José Araújo	M	1:21:33 AM
+16	M45	2	678	Antonio Silva	M	1:15:40 AM
+17	M45	3	1338	Mario Carreira	M	1:15:45 AM
+90	M45	16	684	João Reis	M	1:24:59 AM
+132	M45	22	1310	Antonio Silva	M	1:28:12 AM
+56	M45	9	517	Paulo Magalhães	M	1:22:34 AM
+59	M45	10	616	Alberto Silva	M	1:22:50 AM
+84	M45	15	648	Gualter Freitas	M	1:24:38 AM
+106	M45	17	531	Manuel Oliveira	M	1:26:42 AM
+140	M45	23	33	Carmindo Soares	M	1:28:24 AM
+128	M45	21	4056	Alvaro Sousa	M	1:28:00 AM
+109	M45	18	683	Fernando Santos	M	1:26:54 AM
+40	M45	6	1308	Francisco Teixeira	M	1:20:46 AM
+83	M45	14	654	Eduardo Lemos	M	1:24:38 AM
+112	M45	19	1362	Jose Fernandes	M	1:27:00 AM
+80	M45	13	691	Jorge Matos	M	1:24:34 AM
+68	M45	11	448	Paulo Matos	M	1:23:26 AM
+11	M45	1	727	Davide Figueiredo	M	1:13:29 AM
+30	M45	5	59	José Andrade	M	1:19:33 AM
+117	M45	20	1837	Alexandre Almeida	M	1:27:24 AM
+45	M45	7	667	João Silva	M	1:21:09 AM
+22	M45	4	44	Manuel Mendes	M	1:17:56 AM
+73	M45	12	48	Carlos Dias	M	1:23:51 AM
+27	M50	1	4036	Ulisses Lopes	M	1:18:40 AM
+60	M50	6	369	Manuel Palmeiro	M	1:22:56 AM
+51	M50	5	370	Orlando Alves	M	1:22:00 AM
+28	M50	2	614	Augusto Antunes	M	1:18:58 AM
+100	M50	7	528	João Cancelinha Oliveira	M	1:26:04 AM
+102	M50	8	487	Rui Lima	M	1:26:26 AM
+42	M50	4	593	Belmiro Rodrigues	M	1:20:54 AM
+108	M50	9	651	Luís Cardoso	M	1:26:53 AM
+130	M50	10	4031	Mario Goncalves	M	1:28:09 AM
+41	M50	3	590	José Oliveira	M	1:20:48 AM
+69	M55	3	4011	Benjamim Soares	M	1:23:34 AM
+113	M55	5	4017	Eduardo Sousa	M	1:27:04 AM
+24	M55	1	53	Joaquim Silva	M	1:18:08 AM
+47	M55	2	49	Henrique Paredes	M	1:21:23 AM
+104	M55	4	1304	Mauricio Torrinha	M	1:26:41 AM
+114	M60	4	1833	Rui Gomes	M	1:27:19 AM
+35	M60	1	1302	Casimiro Galhardo	M	1:20:05 AM
+76	M60	2	4030	Manuel Dourado	M	1:24:10 AM
+120	M60	5	455	Fernando Antunes	M	1:27:32 AM
+99	M60	3	669	Horácio Teixeira	M	1:26:02 AM
