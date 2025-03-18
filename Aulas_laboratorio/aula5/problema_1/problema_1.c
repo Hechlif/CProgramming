@@ -39,6 +39,7 @@ int main() {
 
     FILE *final = fopen("RunResults_out.txt", "w");
     if (!final) return 1;
+    
     for (int i = 0; i < count; i++) {
         fprintf(final, "%s", linhas[i]);
         free(linhas[i]);
