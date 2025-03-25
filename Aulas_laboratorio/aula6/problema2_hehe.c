@@ -52,7 +52,7 @@ void liberar_lista(Participante *head) {
     }
 }
 
-Participante* ler_arquivo(const char *nome_arquivo) {
+Participante* ler_ficheiro(const char *nome_arquivo) {
     FILE *file = fopen(nome_arquivo, "r");
     if (!file) {
         printf("Erro ao abrir o arquivo %s\n", nome_arquivo);
@@ -67,7 +67,7 @@ Participante* ler_arquivo(const char *nome_arquivo) {
     char escalao[5], nome[100], sexo, tempo[10];
 
     while (fgets(linha, sizeof(linha), file)) {
-        sscanf(linha, "%d\t%s\t%d\t%d\t%[^\t]\t%c\t%s", &posicao, escalao, &posicao_esc, &dorsal, nome, &sexo, tempo);
+        sscanf(linha, "%d\t%s\t%d\t%d\t%[^	]\t%c\t%s", &posicao, escalao, &posicao_esc, &dorsal, nome, &sexo, tempo);
         adicionar(&head, criar_no(posicao, escalao, posicao_esc, dorsal, nome, sexo, tempo));
     }
     
@@ -93,22 +93,33 @@ void pesquisar_nome(Participante *head, char *nome) {
     }
 }
 
+void pesquisar_masculino(Participante *head) {
+    while (head) {
+        if (head->sexo == 'M') {
+            printf("%d\t%s\t%d\t%d\t%s\t%c\t%s\n", head->posicao, head->escalao, head->posicao_esc, head->dorsal, head->nome, head->sexo, head->tempo);
+        }
+        head = head->proximo;
+    }
+}
+
 void mostrar_ajuda() {
-    printf("Uso: ./programa [-h] [-i ficheiro] [-e escalao] [-n nome]\n");
-    printf("  -h           Mostra esta mensagem de ajuda\n");
-    printf("  -i ficheiro  Usa o ficheiro especificado como entrada\n");
-    printf("  -e escalao   Pesquisa participantes de um escalão específico\n");
-    printf("  -n nome      Pesquisa participantes com o nome especificado\n");
+    printf("Uso: ./problema_2 [-h] [-i ficheiro] [-e escalao] [-n nome] [-m]\n");
+    printf("  -h            Mostra esta mensagem de ajuda\n");
+    printf("  -i ficheiro   Usa o ficheiro especificado como entrada\n");
+    printf("  -e escalao    Pesquisa participantes de um escalão específico\n");
+    printf("  -n nome       Pesquisa participantes com o nome especificado\n");
+    printf("  -m            Pesquisa apenas participantes masculinos\n");
 }
 
 int main(int argc, char *argv[]) {
     char *arquivo = "RunResults.txt";
     char *escalao = NULL;
     char *nome = NULL;
+    int masculino = 0;
     int opt;
     int encontrou = 0;
 
-    while ((opt = getopt(argc, argv, "h:i:e:n:")) != -1) {
+    while ((opt = getopt(argc, argv, "h:i:e:n:m")) != -1) {
         switch (opt) {
             case 'h':
                 mostrar_ajuda();
@@ -124,13 +135,17 @@ int main(int argc, char *argv[]) {
                 nome = optarg;
                 encontrou = 1;
                 break;
+            case 'm':
+                masculino = 1;
+                encontrou = 1;
+                break;
             default:
                 mostrar_ajuda();
                 return 1;
         }
     }
 
-    Participante *lista = ler_arquivo(arquivo);
+    Participante *lista = ler_ficheiro(arquivo);
 
     if (escalao) {
         pesquisar_escalao(lista, escalao);
@@ -138,7 +153,9 @@ int main(int argc, char *argv[]) {
     if (nome) {
         pesquisar_nome(lista, nome);
     }
-    
+    if (masculino) {
+        pesquisar_masculino(lista);
+    }
     if (!encontrou) {
         printf("Nenhum critério de pesquisa foi especificado. Use -h para ajuda.\n");
     }
