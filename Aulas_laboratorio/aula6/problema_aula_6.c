@@ -75,29 +75,62 @@ Participante* ler_ficheiro(const char *nome_arquivo) {
     return head;
 }
 
-void pesquisar_escalao(Participante *head, char *escalao) {
-    while (head) {
-        if (strcmp(head->escalao, escalao) == 0) {
-            printf("%d\t%s\t%d\t%d\t%s\t%c\t%s\n", head->posicao, head->escalao, head->posicao_esc, head->dorsal, head->nome, head->sexo, head->tempo);
+Participante* filtrar_escalao(Participante *head, char *escalao) {
+    Participante *nova_lista = NULL;
+    Participante *atual = head;
+    
+    while (atual) {
+        if (strcmp(atual->escalao, escalao) == 0) {
+            Participante *novo = criar_no(atual->posicao, atual->escalao, atual->posicao_esc, 
+                                          atual->dorsal, atual->nome, atual->sexo, atual->tempo);
+            adicionar(&nova_lista, novo);
         }
-        head = head->proximo;
+        atual = atual->proximo;
     }
+    
+    liberar_lista(head);
+    return nova_lista;
 }
 
-void pesquisar_nome(Participante *head, char *nome) {
-    while (head) {
-        if (strstr(head->nome, nome) != NULL) {
-            printf("%d\t%s\t%d\t%d\t%s\t%c\t%s\n", head->posicao, head->escalao, head->posicao_esc, head->dorsal, head->nome, head->sexo, head->tempo);
+Participante* filtrar_nome(Participante *head, char *nome) {
+    Participante *nova_lista = NULL;
+    Participante *atual = head;
+    
+    while (atual) {
+        if (strstr(atual->nome, nome) != NULL) {
+            Participante *novo = criar_no(atual->posicao, atual->escalao, atual->posicao_esc, 
+                                          atual->dorsal, atual->nome, atual->sexo, atual->tempo);
+            adicionar(&nova_lista, novo);
         }
-        head = head->proximo;
+        atual = atual->proximo;
     }
+    
+    liberar_lista(head);
+    return nova_lista;
 }
 
-void pesquisar_masculino(Participante *head) {
-    while (head) {
-        if (head->sexo == 'M') {
-            printf("%d\t%s\t%d\t%d\t%s\t%c\t%s\n", head->posicao, head->escalao, head->posicao_esc, head->dorsal, head->nome, head->sexo, head->tempo);
+Participante* filtrar_masculino(Participante *head) {
+    Participante *nova_lista = NULL;
+    Participante *atual = head;
+    
+    while (atual) {
+        if (atual->sexo == 'M') {
+            Participante *novo = criar_no(atual->posicao, atual->escalao, atual->posicao_esc, 
+                                          atual->dorsal, atual->nome, atual->sexo, atual->tempo);
+            adicionar(&nova_lista, novo);
         }
+        atual = atual->proximo;
+    }
+    
+    liberar_lista(head);
+    return nova_lista;
+}
+
+void imprimir_lista(Participante *head) {
+    while (head) {
+        printf("%d\t%s\t%d\t%d\t%s\t%c\t%s\n", 
+               head->posicao, head->escalao, head->posicao_esc, 
+               head->dorsal, head->nome, head->sexo, head->tempo);
         head = head->proximo;
     }
 }
@@ -119,7 +152,7 @@ int main(int argc, char *argv[]) {
     int opt;
     int encontrou = 0;
 
-    while ((opt = getopt(argc, argv, "h:i:e:n:m")) != -1) {
+    while ((opt = getopt(argc, argv, "hi:e:n:m")) != -1) {
         switch (opt) {
             case 'h':
                 mostrar_ajuda();
@@ -148,16 +181,19 @@ int main(int argc, char *argv[]) {
     Participante *lista = ler_ficheiro(arquivo);
 
     if (escalao) {
-        pesquisar_escalao(lista, escalao);
+        lista = filtrar_escalao(lista, escalao);
     }
     if (nome) {
-        pesquisar_nome(lista, nome);
+        lista = filtrar_nome(lista, nome);
     }
     if (masculino) {
-        pesquisar_masculino(lista);
+        lista = filtrar_masculino(lista);
     }
-    if (!encontrou) {
-        printf("Nenhum critério de pesquisa foi especificado. Use -h para ajuda.\n");
+    
+    if (lista) {
+        imprimir_lista(lista);
+    } else {
+        printf("Nenhum resultado encontrado.\n");
     }
     
     liberar_lista(lista);
