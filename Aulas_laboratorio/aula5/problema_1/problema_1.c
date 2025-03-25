@@ -28,6 +28,7 @@ int main() {
 
     char *linhas[MAX_LINHAS], buffer[TAMANHO_LINHA];
     int count = 0;
+    
     fgets(buffer, TAMANHO_LINHA, inicial);
 
     while (fgets(buffer, TAMANHO_LINHA, inicial) && count < MAX_LINHAS) {

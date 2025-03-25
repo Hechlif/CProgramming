@@ -20,7 +20,6 @@ int main() {
     int count = 0;
     
     fgets(buffer, TAMANHO_LINHA, inicial);
-    char *cabecalho = strdup(buffer);
 
     while (fgets(buffer, TAMANHO_LINHA, inicial) && count < MAX_LINHAS) {
         linhas[count++] = strdup(buffer);
