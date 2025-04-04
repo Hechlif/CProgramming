@@ -51,7 +51,7 @@ void process_text(dicionario *d) {
             if (!palavra_no_dicionario(d, token)) {
                 if (!has_error) {
                     has_error = 1;
-                    printf("%d: %s", line_number, line);
+                    printf("%d: %s\n", line_number, line);
                 }
                 printf("Erro na palavra \"%s\"\n", token);
             }
