@@ -1,0 +1,66 @@
+#!/bin/bash
+#
+# (C) 2025 Docentes de Programação/MEEC
+#
+# Shell script para correr testes a um projecto de ORTOGRAFIA
+# caso seja corrido sem argumentos na linha de comando, usa o modo 1 e stdin/stdout
+# pode ser corrido com o modo de funcionamento como 1º parâmetro na linha de comando,
+# ou seja:
+# ./run_test 2
+# ./run_test 3
+# 
+# programas a correr
+PROG_ALUNOS="./teste"
+VALGRIND="time valgrind --leak-check=full --show-leak-kinds=all "
+DIFF="diff -i --text"
+# opções para o time
+export TIME="real %E\tuser %U\tsys %S\texit status %x\t%I inputs + %O outputs"
+INPUT=in.txt
+OUTPUT=out
+EXPECTED=expected
+
+if ( ! [ -x $PROG_ALUNOS ] ); then
+  echo ERRO: O programa $PROG_ALUNOS não existe com este nome.
+  exit 1 
+fi
+if ( ! [ -d T01 ] ); then
+  echo As pastas com os testes não existe na diretoria corrente.
+  echo Por favor faça unzip do run_test.zip para esta directoria.
+  exit 1 
+fi
+if ( [ -z $1 ] ); then
+  MODE=1
+else
+  MODE=$1
+fi
+erros=0
+# Percorrer as pastas todas
+for file in T01 T02 T03 T04 T05 T06 T07 T09 T10 T11; do
+  echo -e "\e[7mTeste $file\e[0m mode $MODE"
+  cd $file
+  if ( [ $MODE == 1 ] ); then
+    # modo 1, stdin e stdout
+    $VALGRIND ../$PROG_ALUNOS < $INPUT > ${OUTPUT}$MODE.txt
+  else
+    if ( [ $file == T09 ] ); then
+      # T09 no modo 2 e 3 tem parâmetros na linha de comando
+      $VALGRIND ../$PROG_ALUNOS -m $MODE -n 3 -a 30 -i $INPUT -o ${OUTPUT}$MODE.txt
+    else
+      $VALGRIND ../$PROG_ALUNOS -m $MODE -i $INPUT -o ${OUTPUT}$MODE.txt
+    fi
+  fi
+  # Comparar os ficheiros
+  $DIFF ${OUTPUT}$MODE.txt ${EXPECTED}$MODE.txt
+  if [ $? -eq 0 ]; then
+    echo $file OK
+  else
+    echo $file ERRO
+    let erros++
+    if [ $erros -gt 5 ]; then
+      echo Demasiados erros, terminando.
+      exit
+    fi
+  fi
+  cd ..
+done
+
