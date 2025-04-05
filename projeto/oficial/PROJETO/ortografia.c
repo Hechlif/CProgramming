@@ -3,7 +3,6 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdbool.h>
-#include <unistd.h>
 
 #define MAXIMO_TAMANHO_DE_PALAVRAS 1000
 #define MAXIMO_ALTERNATIVAS 10
@@ -423,7 +422,7 @@ void corrigir_texto(dicionario *d, int max_diferencas, FILE *entrada, FILE *said
             
             // Pular caracteres não alfabéticos
             while ((i < len && !letra_valida(line[i])) || (line[i] == '\'' && 
-                ((i == 0) ? 1 : (!letra_valida(line[i - 1]) || !letra_valida(line[i + 1]))))) {
+                   ((i == 0) ? 1 : (!letra_valida(line[i - 1]) || !letra_valida(line[i + 1]))))) {
                 i++;
             }
             
@@ -587,70 +586,41 @@ int main(int argc, char *argv[]) {
     const char *output_file = NULL;
     FILE *entrada = stdin;
     FILE *saida = NULL;
-    FILE *flag = NULL;
-    int opt;
     
-    // Processar argumentos de linha de comando usando getopt
-    while ((opt = getopt(argc, argv, "hi:o:d:a:n:m:")) != -1) {
-        switch (opt) {
-            case 'h':
-                mostrar_ajuda();
-                return EXIT_SUCCESS;
-            case 'i':
-                input_file = optarg;
-                if (!(flag = fopen(optarg, "r"))) {
-                    fprintf(stderr, "O ficheiro de texto \"%s\" não existe verifique se esta correto.\n", optarg);
-                    return EXIT_FAILURE;
-                }
-                fclose(flag);
-                break;
-            case 'o':
-                output_file = optarg;
-                break;
-            case 'd':
-                if (!(flag = fopen(optarg, "r"))) {
-                    fprintf(stderr, "O dicinario \"%s\" não existe verifique se esta correto.\n", optarg);
-                    return EXIT_FAILURE;
-                }
-                fclose(flag);
-                dict_file = optarg;
-                break;
-            case 'a':
-                max_alternativas = atoi(optarg);
-                if (max_alternativas == 0) {
-                    fprintf(stderr, "O numero de alternativas tem de ser um numero, nao pode ser uma string.\n");
-                    return EXIT_FAILURE;
-                }
-                if (max_alternativas < 0) {
-                    fprintf(stderr, "O valor de alternativas nao pode ser menor ao igual a zero.\n");
-                    return EXIT_FAILURE;
-                }
-                break;
-            case 'n':
-                max_diferencas = atoi(optarg);
-                if (max_diferencas == 0) {
-                    fprintf(stderr, "O numero de diferenaças tem de ser um numero, nao pode ser uma string.\n");
-                    return EXIT_FAILURE;
-                }
-                if (max_diferencas < 0) {
-                    fprintf(stderr, "O valor de diferenças nao pode ser menor que 0.\n");
-                    return EXIT_FAILURE;
-                }
-                break;
-            case 'm':
-                modo = atoi(optarg);
-                if (modo == 0) {
-                    fprintf(stderr, "O modo \"%s\" não é um numero sequer, verifique o -h para ver os modos possiveis.\n", optarg);
-                    return EXIT_FAILURE;
-                }
-                if (!(modo <= 3 && modo >= 1)) {
-                    fprintf(stderr, "O modo %d não existe verifique o -h para ver os modos possiveis.\n", modo);
-                    return EXIT_FAILURE;
-                }
-                break;
-            case '?':
-                fprintf(stderr, "Argumento invalido, utilize %s -h para ver os argumentos possiveis.\n", argv[0]);
+    // Processar argumentos de linha de comando
+    for (int i = 1; i < argc; i++) {
+        if (strcmp(argv[i], "-h") == 0) {
+            mostrar_ajuda();
+            return EXIT_SUCCESS;
+        } else if (strcmp(argv[i], "-i") == 0 && i + 1 < argc) {
+            input_file = argv[++i];
+        } else if (strcmp(argv[i], "-o") == 0 && i + 1 < argc) {
+            output_file = argv[++i];
+        } else if (strcmp(argv[i], "-d") == 0 && i + 1 < argc) {
+            dict_file = argv[++i];
+        } else if (strcmp(argv[i], "-a") == 0 && i + 1 < argc) {
+            max_alternativas = atoi(argv[++i]);
+            if (!validar_max_alternativas(max_alternativas)) {
+                fprintf(stderr, "Erro: número máximo de alternativas deve ser maior que 0\n");
                 return EXIT_FAILURE;
+            }
+        } else if (strcmp(argv[i], "-n") == 0 && i + 1 < argc) {
+            max_diferencas = atoi(argv[++i]);
+            if (!validar_max_diferencas(max_diferencas)) {
+                fprintf(stderr, "Erro: número máximo de diferenças deve ser maior que 0\n");
+                return EXIT_FAILURE;
+            }
+        } else if (strcmp(argv[i], "-m") == 0 && i + 1 < argc) {
+            modo = atoi(argv[++i]);
+            if (!validar_modo(modo)) {
+                fprintf(stderr, "Erro: modo deve ser 1, 2 ou 3\n");
+                return EXIT_FAILURE;
+            }
+        } else {
+            // Parâmetro não reconhecido
+            fprintf(stderr, "Erro: parâmetro '%s' não reconhecido ou valor ausente\n", argv[i]);
+            fprintf(stderr, "Use -h para mostrar ajuda\n");
+            return EXIT_FAILURE;
         }
     }
     

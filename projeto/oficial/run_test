@@ -10,7 +10,7 @@
 # ./run_test 3
 # 
 # programas a correr
-PROG_ALUNOS="./teste"
+PROG_ALUNOS="./ortografia"
 VALGRIND="time valgrind --leak-check=full --show-leak-kinds=all "
 DIFF="diff -i --text"
 # opções para o time
