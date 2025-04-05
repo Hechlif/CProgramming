@@ -4,6 +4,7 @@
 #include <ctype.h>
 #include <stdbool.h>
 #include <unistd.h>
+#include <getopt.h>
 
 #define MAXIMO_TAMANHO_DE_PALAVRAS 1000
 #define MAXIMO_ALTERNATIVAS 10
