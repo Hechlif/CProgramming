@@ -8,7 +8,8 @@
     #define MAXIMO_ALTERNATIVAS 10
     #define MAXIMO_DIFERENCAS 2
     #define DEFAULT_DICT_FILE "words"
-
+    
+    // Estruturas para o dicionário
     typedef struct {
         char **palavras;
         size_t count;
@@ -21,7 +22,8 @@
     } alternativa;
 
     dicionario d;
-
+    
+    //Mostra os modos de utilização do programa
     void mostrar_ajuda() {
         printf("Uso: ./ortografia [OPCOES]\n");
         printf("Opções disponíveis:\n");
@@ -37,7 +39,7 @@
         printf("  2: identifica palavras erradas e sugere alternativas\n");
         printf("  3: corrige automaticamente o texto\n");
     }
-
+          // Verificação da validade dos inputs do utilizador na linha de comando
     bool validar_modo(int modo) {
         return modo >= 1 && modo <= 3;
     }
@@ -53,20 +55,20 @@
     int letra_valida(char c) {
         return isalpha((unsigned char)c);
     }
-
+          // Cria uma estrutura para o dicionário vazia
     void inicializa_dicionario(dicionario *d) {
         d->palavras = NULL;
         d->count = 0;
         d->capacity = 0;
     }
-
+          // Libertação da memória alocada
     void libera_dicionario(dicionario *d) {
         for (size_t i = 0; i < d->count; i++) {
             free(d->palavras[i]);
         }
         free(d->palavras);
     }
-
+          // Adição de palavras ao dicionário
     void adiciona_palavra(dicionario *d, const char *word) {
         if (d->count == d->capacity) {
             d->capacity = (d->capacity == 0) ? 10 : d->capacity * 2;
@@ -83,11 +85,11 @@
         }
         d->count++;
     }
-
+        // Base para comparação de palavras noutras funções
     int compara_palavras(const void *a, const void *b) {
         return strcasecmp(*(const char **)a, *(const char **)b);
     }
-
+        // Dá load no dicionário, colocando cada palavra do mesmo num array com a terminação correta de /0 após cada palavra
     void load_dicionario(dicionario *d, const char *fname) {
         FILE *word = fopen(fname, "r");
         if (!word) {
@@ -114,6 +116,7 @@
         qsort(d->palavras, d->count, sizeof(char*), compara_palavras);
     }
 
+        //Duplica a palavra a ser encontrada no dicionário como key para ser usada numa função de busca
     int palavra_no_dicionario(dicionario *d, const char *word) {
         char *key = strdup(word);
         if (!key) {
@@ -126,7 +129,7 @@
         free(key);
         return result != NULL;
     }
-
+        //Descobre substring na string desejada e retorna-a com a terminação correta \0
     char* substring(const char* str, int start, int end) {
         int len = end - start;
         char* substr = (char*)malloc(len + 1);
